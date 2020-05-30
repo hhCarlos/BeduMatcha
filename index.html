@@ -6,12 +6,14 @@
             *::before {
                 margin: 0;
                 padding: 0;
+                box-sizing: inherit;
             }
 
             body {
                 font-family: Arial, Helvetica, sans-serif;
                 background-color: black;
                 padding-top: 150px;
+                box-sizing: border-box;
             }
 
             h1 {
@@ -43,13 +45,77 @@
             }
 
             img {
-                margin: 20px auto;
+                margin: 10px;
                 width: 200px;
+            }
+
+            .color-titulo {
+                color: #025157;
+            }
+
+            .color-subtitulo {
+                color: #46484c;
+            }
+
+            nav {
+                width: 100%;
+                padding: 10px;
+                height: 70px;
+                position: fixed;
+                top: 0;
+                left: 0;
+                background-color: white;
+                border-bottom: solid 4px orangered;
+            }
+
+            nav > * {
+                display: inline-block;
+            }
+
+            .nav-logo {
+                padding: 0;
+                margin: 0;
+                width: 20%;
+                height: 100%;
+            }
+
+            .nav-list {
+                width: 70%;
+                text-align: center;
+                margin: 0;
+                height: 100%;
+                vertical-align: middle;
+            }
+
+            .nav-list > * {
+                display: inline-block;
+                text-decoration: none;
+                padding: 0 20px;
+            }
+
+            .nav-sing {
+                width: 10%;
+                height: 100%;
+                box-sizing: border-box;
+                border: solid 2px red;
             }
             
         </style>
     </head>
     <body>
+        <nav>
+            <img src="https://getmatcha.com/wp-content/themes/getmatcha/img/footer_logo.svg" class="nav-logo" /><ul class="nav-list">
+                <li>Platform</li>
+                <li>Pricing</li>
+                <li>Customers</li>
+                <li>Resources</li>
+                <li>About</li>
+            </ul><div class="nav-sing">
+
+            </div>
+            
+            
+        </nav>
         <h1>
             Build your blog. Build your business.
         </h1>
