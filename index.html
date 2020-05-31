@@ -1,6 +1,8 @@
 <html>
-    <head>
+    <head lang="es">
+        <meta charset="utf-8"/>
         <style>
+
             *,
             *::after,
             *::before {
@@ -9,125 +11,161 @@
                 box-sizing: inherit;
             }
 
-            body {
+            html {
+                box-sizing: inherit;
                 font-family: Arial, Helvetica, sans-serif;
-                background-color: black;
-                padding-top: 150px;
+            }
+
+            body {
                 box-sizing: border-box;
-            }
-
-            h1 {
-                font-size: 30px;
-                padding-bottom: 20px;
-            }
-
-            p {
-                font-size: 17px;
-            }
-
-            h1, p {
+                background-color: black;
+                padding-top: 200px;
                 color: white;
-                text-align: center;
             }
 
-            div {
-                text-align: center;
-            }
-
-            input {
-                display: inline-block;
-                margin: 20px auto;
-                width: 420px;
-                padding: 12px;
-                text-align: center;
-                border-radius: 10px;
-                font-size: 20px;
-            }
-
-            img {
-                margin: 10px;
-                width: 200px;
-            }
-
-            .color-titulo {
-                color: #025157;
-            }
-
-            .color-subtitulo {
-                color: #46484c;
-            }
-
-            nav {
-                width: 100%;
-                padding: 10px;
-                height: 70px;
+            .nav-bar {
                 position: fixed;
                 top: 0;
                 left: 0;
+                width: 100%;
+                padding: 20px;
                 background-color: white;
-                border-bottom: solid 4px orangered;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: solid 5px royalblue;
             }
 
-            nav > * {
-                display: inline-block;
+            .nav-bar__logo {
+                height: 40px;
             }
 
-            .nav-logo {
-                padding: 0;
-                margin: 0;
-                width: 20%;
-                height: 100%;
-            }
-
-            .nav-list {
-                width: 70%;
-                text-align: center;
-                margin: 0;
-                height: 100%;
-                vertical-align: middle;
-            }
-
-            .nav-list > * {
-                display: inline-block;
+            .nav-bar__list {
                 text-decoration: none;
-                padding: 0 20px;
             }
 
-            .nav-sing {
-                width: 10%;
-                height: 100%;
-                box-sizing: border-box;
-                border: solid 2px red;
+            .nav-bar__list > li {
+                margin: 0 20px;
+                cursor: pointer;
+                display: inline-block;
+                color: black;
             }
-            
+
+            .nav-bar__list > li:hover {
+                text-decoration: underline;
+            }
+
+            .nav-bar__sign > button {
+                width: 120px;
+                height: 32px;
+                border-radius: 20px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            .button-a {
+                background-color: black;
+                color: white;
+            }
+
+            .button-b {
+                background-color: white;
+                color: black;
+                border: none;
+            }
+
+            .button-b:hover {
+                text-decoration: underline;
+            }
+
+            .content {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+            }
+
+            .titulo {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .titulo > span {   
+                font-size: 18px;
+                font-style: italic;
+            }
+
+            .titulo > input {
+                width: 280px;
+                padding: 20px;
+                background-color: white;
+                margin: 20px 0;
+                border-radius: 10px;
+                text-align: center;
+                text-align: center;
+                font-size: 16px;
+            }
+
+            .titulo > input:focus {
+                outline: none;
+            }
+
         </style>
     </head>
     <body>
-        <nav>
-            <img src="https://getmatcha.com/wp-content/themes/getmatcha/img/footer_logo.svg" class="nav-logo" /><ul class="nav-list">
+        <nav class="nav-bar">
+            <img class="nav-bar__logo" src="https://getmatcha.com/wp-content/themes/getmatcha/img/footer_logo.svg" />
+            <ul class="nav-bar__list">
                 <li>Platform</li>
                 <li>Pricing</li>
                 <li>Customers</li>
                 <li>Resources</li>
                 <li>About</li>
-            </ul><div class="nav-sing">
-
+            </ul>
+            <div class="nav-bar__sign">
+                <button class="button-a">Sing in</button>
+                <button class="button-b">Start free trial</button>
             </div>
-            
-            
         </nav>
-        <h1>
-            Build your blog. Build your business.
-        </h1>
-        <p>Instantly publish articles, drive more traffic, grow your email list, and see your blog’s impact on sales. </p>
-        <div>
-            <input type="text" placeholder="Holis crayolis..." />
-        </div>
-        <div>
-            <img src="https://getmatcha.com/wp-content/themes/getmatcha/img/capterra.png" />
-        </div>
+        <main class="content">
+            <div class="titulo">
+                <canvas id="canvas" width="1000" height="120"></canvas>
+                <span>Instantly publish articles, drive more traffic, grow your email list, and see your blog’s impact on sales.</span>
+                <input type="text" placeholder="Holis Crayolis..." />
+            </div>
+        </main>
     </body>
     <script>
-        
+
+        (function() {
+
+            let canvas = document.getElementById('canvas');
+            let ctx = canvas.getContext('2d');
+
+            let gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop("0", "gold");
+            gradient.addColorStop("0.5" ,"white");
+            gradient.addColorStop("1.0", "purple");
+                
+                ctx.font="55px Arial";
+                ctx.strokeStyle = 'white';
+                ctx.lineWidth = 2;
+                ctx.strokeText("Build your blog. Build your business.", 60 - 16,( canvas.height / 2 ) - 16);
+                for( let i = 0; i < 15; i += 1 ) {
+                    ctx.strokeStyle = 'blue';
+                    ctx.lineWidth = 2;
+                    ctx.strokeText("Build your blog. Build your business.", 60 - i,( canvas.height / 2 ) - i);
+                }
+                ctx.fillStyle = gradient;
+                ctx.fillText("Build your blog. Build your business.", 60,canvas.height / 2);
+
+        }())
+        //https://getmatcha.com/wp-content/themes/getmatcha/img/capterra.png
+        //center https://getmatcha.com/wp-content/themes/getmatcha/img/capterra.png
     </script>
 </html>
