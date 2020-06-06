@@ -1,171 +1,124 @@
+<!DOCTYPE html>
 <html>
-    <head lang="es">
-        <meta charset="utf-8"/>
-        <style>
+<head>
+	<title></title>
+	<style type="text/css">
 
-            *,
-            *::after,
-            *::before {
-                margin: 0;
-                padding: 0;
-                box-sizing: inherit;
-            }
+		* {
+			padding: 0;
+			margin: 0;
+		}
 
-            html {
-                box-sizing: inherit;
-                font-family: Arial, Helvetica, sans-serif;
-            }
+		body {
+			background-color: black;
+			font-family: arial;
+			padding-bottom: 100px;
+		}
+		
+		li:hover {
+			cursor: pointer;
+			color: orangered;
+		}
 
-            body {
-                box-sizing: border-box;
-                background-color: black;
-                padding-top: 200px;
-                color: white;
-            }
+		button {
+			cursor: pointer;
+		}
 
-            .nav-bar {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                padding: 20px;
-                background-color: white;
-                display: flex;
-                flex-direction: row;
-                flex-wrap: nowrap;
-                align-items: center;
-                justify-content: space-between;
-                border-bottom: solid 5px royalblue;
-            }
+	</style>
+</head>
+<body>
 
-            .nav-bar__logo {
-                height: 40px;
-            }
-
-            .nav-bar__list {
-                text-decoration: none;
-            }
-
-            .nav-bar__list > li {
-                margin: 0 20px;
-                cursor: pointer;
-                display: inline-block;
-                color: black;
-            }
-
-            .nav-bar__list > li:hover {
-                text-decoration: underline;
-            }
-
-            .nav-bar__sign > button {
-                width: 120px;
-                height: 32px;
-                border-radius: 20px;
-                font-weight: bold;
-                cursor: pointer;
-            }
-
-            .button-a {
-                background-color: black;
-                color: white;
-            }
-
-            .button-b {
-                background-color: white;
-                color: black;
-                border: none;
-            }
-
-            .button-b:hover {
-                text-decoration: underline;
-            }
-
-            .content {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                flex-wrap: nowrap;
-            }
-
-            .titulo {
-                display: flex;
-                flex-direction: column;
-                flex-wrap: nowrap;
-                justify-content: center;
-                align-items: center;
-            }
-
-            .titulo > span {   
-                font-size: 18px;
-                font-style: italic;
-            }
-
-            .titulo > input {
-                width: 280px;
-                padding: 20px;
-                background-color: white;
-                margin: 20px 0;
-                border-radius: 10px;
-                text-align: center;
-                text-align: center;
-                font-size: 16px;
-            }
-
-            .titulo > input:focus {
-                outline: none;
-            }
-
-        </style>
-    </head>
-    <body>
-        <nav class="nav-bar">
-            <img class="nav-bar__logo" src="https://getmatcha.com/wp-content/themes/getmatcha/img/footer_logo.svg" />
-            <ul class="nav-bar__list">
-                <li>Platform</li>
-                <li>Pricing</li>
-                <li>Customers</li>
-                <li>Resources</li>
-                <li>About</li>
-            </ul>
-            <div class="nav-bar__sign">
-                <button class="button-a">Sing in</button>
-                <button class="button-b">Start free trial</button>
-            </div>
-        </nav>
-        <main class="content">
-            <div class="titulo">
-                <canvas id="canvas" width="1000" height="120"></canvas>
-                <span>Instantly publish articles, drive more traffic, grow your email list, and see your blog’s impact on sales.</span>
-                <input type="text" placeholder="Holis Crayolis..." />
-            </div>
-        </main>
-    </body>
-    <script>
-
-        (function() {
-
-            let canvas = document.getElementById('canvas');
-            let ctx = canvas.getContext('2d');
-
-            let gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-            gradient.addColorStop("0", "gold");
-            gradient.addColorStop("0.5" ,"white");
-            gradient.addColorStop("1.0", "purple");
-                
-                ctx.font="55px Arial";
-                ctx.strokeStyle = 'white';
-                ctx.lineWidth = 2;
-                ctx.strokeText("Build your blog. Build your business.", 60 - 16,( canvas.height / 2 ) - 16);
-                for( let i = 0; i < 15; i += 1 ) {
-                    ctx.strokeStyle = 'blue';
-                    ctx.lineWidth = 2;
-                    ctx.strokeText("Build your blog. Build your business.", 60 - i,( canvas.height / 2 ) - i);
-                }
-                ctx.fillStyle = gradient;
-                ctx.fillText("Build your blog. Build your business.", 60,canvas.height / 2);
-
-        }())
-        //https://getmatcha.com/wp-content/themes/getmatcha/img/capterra.png
-        //center https://getmatcha.com/wp-content/themes/getmatcha/img/capterra.png
-    </script>
+	<div style="border-bottom: solid 4px orangered; background-color: white; position: fixed; top: 0; width: 100%; z-index: 9999;">
+		<div style="box-sizing: border-box; display: inline-block; width: 20%; height: auto; vertical-align: top;">
+			<img 
+			style="display: block; 
+				   padding-top: auto; 
+				   height: 40px; 
+				   width: 70%; 
+				   margin-left: auto; 
+				   margin-right: auto; 
+				   margin-top: 20px;
+				   margin-bottom: 20px;" 
+			src="https://getmatcha.com/wp-content/themes/getmatcha/img/footer_logo.svg" />
+		</div><!--
+	--><div style="box-sizing: border-box; display: inline-block; width: 60%; height: auto; vertical-align: top;">
+		<ul style="display: block; width: 70%; margin-left: auto; height: auto; margin-right: auto; margin-top: 35px; margin-bottom: 20px;">
+			<li style="display: inline-block; text-align: center; width: 20%; margin-top: 0; padding-top: 0; height: 20px">Platform</li><!--
+			--><li style="display: inline-block; text-align: center; width: 20%; margin-top: 0; padding-top: 0; height: 20px">Pricing</li><!--
+			--><li style="display: inline-block; text-align: center; width: 20%; margin-top: 0; padding-top: 0; height: 20px">Customers</li><!-- 
+			--><li style="display: inline-block; text-align: center; width: 20%; margin-top: 0; padding-top: 0; height: 20px">Resources</li><!--
+			--><li style="display: inline-block; text-align: center; width: 20%; margin-top: 0; padding-top: 0; height: 20px">About</li>
+		</ul>
+	</div><!-- 
+	--><div style="box-sizing: border-box; display: inline-block; width: 20%; height: auto; vertical-align: top;">
+			<div style="text-align: center; padding-top: 10px">
+				<button style="width: 30%; height: 60px; background-color: white; border: none;">Sign in</button>
+				<button style="width: 50%; height: 60px; color: white; border-radius: 5px; background-color: royalblue; border: none;">Start Free Trial</button>
+			</div>
+		</ul>
+	</div>
+	</div>
+	<div style="color: white; text-align: center; font-size: 60px; font-style: italic; margin-top: 150px; margin-bottom: 40px">
+		Build your blog. Build your business.
+	</div>
+	<div style="color: white; text-align: center; font-size: 18px;">
+		Instantly publish articles, drive more traffic, grow your email list, and see your blog’s impact on sales.
+	</div>
+	<div style="padding-top: 30px; padding-bottom: 20px">
+		<div style="width: 370px; height: 80px; margin-left: auto; margin-right: auto;">
+			<input type="text" placeholder="Haroo...." style="border-radius: 5px 0 0 5px; padding: 10px; box-sizing: border-box; display: inline-block; outline: none; border: none; width: 70%; height: 100%; margin-right: 0; margin-left: 0; font-size: 40px" /><!-- 
+			--><button style="border-radius: 0 5px 5px 0; background-color: purple; font-weight: bolder; color: white; font-size: 15px; vertical-align: top; display: inline-block; outline: none; border: none; margin-left: 0; margin-right: 0; width: 30%; height: 100%">Try it now -></button>
+		</div>
+	</div>
+	<div style="text-align: center; color: rgba(255,255,255,.7);">
+		Start publishing today with a free 7-day trial. <br />
+		No credit card required.
+	</div>
+	<div style="margin-top: 40px; margin-bottom: 40px;">
+		<div style="margin-left: auto; margin-right: auto; width: 400px; height: 45px;">
+			<img src="https://getmatcha.com/wp-content/themes/getmatcha/img/capterra.png" style="width: 100%; height: 100%;" />
+		</div>
+	</div>
+    <div style="height: 500px; position: relative;">
+        <img src="https://getmatcha.com/wp-content/uploads/2019/09/intro_group_image.png"
+             style="position: absolute; top: 50%; left: 50%; max-height: 80%; transform: translate(-50%, -50%);
+                    background-color: white; box-shadow: inset 0 4px 5px rgba(0,0,0,.9);
+                    outline: solid 2px white; outline-offset: 10px;" />
+    </div> 
+    <div style="height: 370px; box-sizing: border-box; vertical-align: top; margin-top: 30px;"><!--  
+        --><div style="width: 45%; height: 100%; display: inline-block; box-sizing: border-box; position: relative;">
+            <!-- video style="position: absolute; 
+                          top: 30px; left: 50%; 
+                          transform: translateX(-50%); 
+                          border: solid 1px white;
+                          width: 65%; 
+                          height: 65%;">
+                <source />
+            </video -->
+            <img src="https://2.bp.blogspot.com/-hDgtOPINEc8/UR4b1FOEqRI/AAAAAAAAAI4/jZH6_HJ6tbk/s1600/Puerta+Epsilon.png"
+                 style="position: absolute; 
+                        top: 30px; left: 50%; 
+                        transform: translateX(-50%);
+                        width: 50%; 
+                        height: 80%;" />
+            <img src="https://getmatcha.com/wp-content/themes/getmatcha/img/see_how_it_works.png" 
+                 style="position: absolute; left: 40%; transform: translateX(-50%); height: 10%;
+                        bottom: 0%;" />
+        </div><!-- 
+        --><div style="width: 55%; height: 100%; display: inline-block; box-sizing: border-box; vertical-align: top;">
+            <p style="color: white; padding: 40px 120px 20px 0; line-height: 24px;">
+                <span style="font-size: 17px;">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem explicabo quis rerum aliquam odio 
+                    non eaque saepe iste quod ipsam voluptatem, repudiandae ducimus earum atque. Excepturi ipsa sed nesciunt mollitia. <br />
+                </span>
+                <span style="font-size: 42px; line-height: 55px; font-weight: bolder;">So much love</span>
+                <span style="font-size: 17px;">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem explicabo quis rerum aliquam odio 
+                    non eaque saepe iste quod ipsam voluptatem, repudiandae ducimus earum atque. Excepturi ipsa sed nesciunt mollitia.
+                </span>
+            </p>
+        </div><!-- 
+    --></div>
+</body>
+<script type="text/javascript"></script>
 </html>
