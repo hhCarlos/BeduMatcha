@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#clientes_container {
+			display: flex;
+			flex-direction: column;
+			border: solid 2px gray;
+		}
+
+		#clientes_container .head,
+		.clientes_header {
+			display: flex;
+			flex: 0 1 100%;
+			border-bottom: solid 2px red;
+		}
+
+		#clientes_container .head > div,
+		.clientes_header > div {
+			display: flex;
+			flex: 0 1 100%;
+			border-bottom: solid 1px red;
+			text-align: center;
+			padding: 15px 10px;
+		}
+	</style>
+</head>
+<body>
+	Nombre: 
+	<input type="text" id="nombre" />
+	Edad:
+	<input type="text" id="edad" />
+	Telefono:
+	<input type="text" id="telefono" />
+	Numero Cuenta:
+	<input type="text" id="numero_cuenta" />
+	Tipo Cliente
+	<select id="tipo_cliente">
+		<option value="cliente_regular">Regular</option>
+		<option value="inversor">Inversor</option>
+		<option value="empleado">Empleado</option>
+	</select>
+	<button id="add_cliente">Dar de Alta</button>
+	<div class="clientes_header">
+		<div>Nombre</div>
+		<div>Edad</div>
+		<div>Telefono</div>
+		<div>N. Cuenta</div>
+		<div>Tipo Cliente</div>
+		<div>Acciones</div>
+		<div>Ultimo Pago</div>
+		<div></div>
+		<div></div>
+	</div>
+	<div id="clientes_container"></div>
+</body>
+<script type="text/javascript">
+	
+	(function() {
+
+		const add_cliente_button = document.getElementById('add_cliente'),
+			clientes_container_container = document.getElementById('clientes_container');
+
+		let Persona = function(nombre, edad, telefono, numero_cuenta, tipo_cliente, acciones_compradas = 0, dinero = 0) {
+			this.nombre = nombre;
+			this.edad = edad;
+			this.telefono = telefono;
+			this.numero_cuenta = numero_cuenta;
+			this.tipo_cliente = tipo_cliente;
+			this.acciones_compradas = acciones_compradas;
+			this.dinero = dinero;
+		}
+
+		let Cuenta = function(tipo_cliente) {
+			this.tipo_cliente = tipo_cliente;
+		}
+
+		let ClientesDelPoderosoBanco = [];
+
+		add_cliente_button.addEventListener('click', nuevoClienteRegistrado);
+
+		function nuevoClienteRegistrado() {
+
+			const get_nombre = document.getElementById('nombre').value,
+				get_edad = document.getElementById('edad').value,
+				get_telefono = document.getElementById('telefono').value,
+				get_numero_cuenta = document.getElementById('numero_cuenta').value,
+				get_tipo_cliente = document.getElementById('tipo_cliente').value;
+
+			const nuevo_cliente = new Persona(get_nombre,get_edad,get_telefono,get_numero_cuenta,get_tipo_cliente);
+
+			ClientesDelPoderosoBanco.push( nuevo_cliente );
+
+			createClientsTableContent();
+
+		}
+
+		function createClientsTableContent() {
+
+			clientes_container_container.innerHTML = '';
+
+			ClientesDelPoderosoBanco.forEach( (cliente, index) => {
+
+				cliente.id = index;
+
+				let createElement = document.createElement('div');
+					createElement.setAttribute('class', 'head');
+					createElement.innerHTML = `
+						<div>${ cliente.nombre }</div>
+						<div>${ cliente.edad }</div>
+						<div>${ cliente.telefono }</div>
+						<div>${ cliente.numero_cuenta }</div>
+						<div>${ cliente.tipo_cliente }</div>
+						<div id="comprador_aa_${ cliente.id }">${ cliente.acciones_compradas }</div>
+						<div id="comprador_di_${ cliente.id }">${ cliente.dinero }</div>
+						<div>
+							<input type="number" id="comprador_${ cliente.id }" />	
+						</div>
+						<div>
+							<button class="compro_accion">Comprar Acciones</button>
+						</div>
+					`;
+
+					clientes_container_container.appendChild( createElement );
+
+			});
+
+			letBuyActions()
+
+		}
+
+		function letBuyActions() {
+
+				const compro_accion_button = document.getElementsByClassName('compro_accion');
+
+				for( let fila = 0; fila < compro_accion_button.length; fila += 1 ) {
+
+					const comprador_aa_container = document.getElementById('comprador_aa_' + fila),
+						comprador_di_container = document.getElementById('comprador_di_' + fila);
+
+					compro_accion_button[fila].addEventListener('click', () => {
+
+						let acciones_compradas = document.getElementById('comprador_' + fila).value,
+							acciones_cuenta = Number( ClientesDelPoderosoBanco[fila].acciones_compradas ) + Number( acciones_compradas ),
+							acciones_nuevo_dinero = 0;
+
+						ClientesDelPoderosoBanco[fila].acciones_compradas = Number( ClientesDelPoderosoBanco[fila].acciones_compradas ) + Number( acciones_compradas );
+
+						comprador_aa_container.innerHTML = acciones_cuenta;
+
+						switch( ClientesDelPoderosoBanco[fila].tipo_cliente ) {
+
+							case 'cliente_regular':
+								acciones_nuevo_dinero = 22 * Number( acciones_compradas )
+								break;
+
+							case 'inversor':
+								acciones_nuevo_dinero = 20 * Number( acciones_compradas )
+								break;
+
+							case 'empleado':
+								acciones_nuevo_dinero = 17 * Number( acciones_compradas )
+								break;
+
+						}
+
+						if( Number( acciones_compradas ) > 1000 && Number( acciones_compradas ) < 2000 ) {
+
+							acciones_nuevo_dinero += (acciones_nuevo_dinero * .03)
+
+						} else if ( Number( acciones_compradas ) > 2000 ) {
+
+							acciones_nuevo_dinero += (acciones_nuevo_dinero * .05)
+
+						}
+
+						comprador_di_container.innerHTML = acciones_nuevo_dinero;
+
+
+					});
+
+				}
+
+			}
+
+
+	}());
+
+</script>
+</html>

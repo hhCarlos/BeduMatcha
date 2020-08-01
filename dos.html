@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Art Gallery</title>
+<style type="text/css">
+
+*,
+*::after,
+*::before {
+margin: 0;
+padding: 0;
+box-sizing: inherit;
+}
+
+*::-webkit-scrollbar {
+ display: none
+}
+
+html {
+box-sizing: border-box;
+font-family: Arial;
+}
+
+body {
+box-sizing: inherit;
+}
+
+#header {
+width: 100%;
+height: 8vh;
+box-shadow: 0 0 4px 2px rgba(140,140,140,.4);
+position: fixed;
+top: 0;
+left: 0;
+border-bottom: solid 4px blue;
+z-index: 2;
+}
+
+.header__logo,
+.header__menu {
+width: 17.5%;
+height: 100%;
+position: relative;
+}
+
+.header__logo {
+float: left;
+}
+
+.header__logo-logo {
+position: absolute;
+top: 50%;
+left: 2.5%;
+height: 90%;
+transform: translateY(-50%);
+}
+
+.header__menu {
+float: right;
+}
+
+.header__menu-menu {
+position: absolute;
+top: 50%;
+right: 2.5%;
+transform: translateY(-50%);
+width: 70%;
+height: 70%;
+}
+
+.header__menu-menu img {
+float: right;
+cursor: pointer;
+transform: scale(1);
+transition: all .2s ease;
+}
+
+.header__menu-menu img:hover {
+transform: scale(1.07);
+}
+
+.header__menu-menu-big {
+width: 40px;
+height: 100%;
+border-radius: 50%;
+box-shadow: 0 0 1px 1px rgba(140,140,140,.2);
+}
+
+.header__menu-menu-min {
+width: 50px;
+height: 80%;
+margin: 10px 1.5% 0;
+}
+
+#side_bar {
+width: 15%;
+height: 92vh;
+position: fixed;
+top: 8vh;
+left: 0;
+background-color: black;
+z-index: 1;
+overflow-y: scroll;
+box-shadow: 0 0 1px 2px rgba(140,140,140,.2);
+}
+
+#gallery {
+width: 85%;
+position: fixed;
+right: 0;
+top: 7vh;
+padding: 40px;
+display: flex;
+flex-flow: row nowrap;
+justify-content: flex-start;
+}
+
+.gallery__item {
+border: solid 3px purple;
+}
+
+.side-bar__title {
+padding: 10px;
+font-size: 40px;
+color: black;
+font-weight: bold;
+border-bottom: solid 2px white;
+position: sticky;
+top: 0;
+background-color: white;
+z-index: 1;
+}
+
+.side-bar__dato {
+padding: 10px 20px;
+font-size: 17px;
+color: white;
+border-bottom: solid 1px rgba(255,255,255,.4);
+cursor: pointer;
+position: relative;
+z-index: 0;
+}
+
+.side-bar__dato--selcted {
+position: sticky;
+z-index: 1;
+top: 65px;
+background-color: black;
+overflow: hidden;
+}
+
+.side-bar__dato--active {
+position: absolute;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+width: 10px;
+height: 10px;
+border-radius: 50%;
+margin: auto 10px auto auto;
+background-color: green;
+animation-name: pulse;
+animation-timing-function: linear;
+animation-iteration-count: infinite;
+animation-duration: 25s;
+animation-delay: 5s;
+}
+
+.finder {
+width: 30%;
+height: 20px;
+position: absolute;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+margin: auto;
+}
+
+.finder > input {
+padding: 0 10px;
+width: 92.5%;
+height: 100%;
+float: left;
+border: solid 1px rgba(140,140,140,.7);
+}
+
+.finder > img {
+width: 5%;
+height: 100%;
+float: right;
+}
+
+@keyframes pulse {
+0% { transform: scale(1); background-color: rgba(200, 55, 0, 1); }
+2.5% { transform: scale(7); background-color: rgba(0, 55, 255, .7);}
+5% { transform: scale(1); background-color: rgba(200, 55, 0, 1); }
+7.5% { transform: scale(7); background-color: rgba(0, 55, 255, .7);}
+10% { transform: scale(1); background-color: rgba(200, 55, 0, 1); }
+12.5% { transform: scale(7); background-color: rgba(0, 55, 255, .7);}
+15% { transform: scale(1); background-color: green; }
+100% { transform: scale(1); background-color: green; }
+}
+
+</style>
+</head>
+<body>
+<div id="header">
+<div class="header__logo">
+<img class="header__logo-logo" src="https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582747_960_720.png" />
+</div>
+<div class="header__menu">
+<div class="header__menu-menu">
+<img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png" class="header__menu-menu-big" />
+<img src="https://www.creativefabrica.com/wp-content/uploads/2019/09/Gear-Icon-vector-by-hartgraphic-18.jpg" class="header__menu-menu-min" />
+</div>
+</div>
+<div class="finder">
+<input type="" name="" />
+<img src="https://image.flaticon.com/icons/png/512/68/68213.png" />
+</div>
+</div>
+<div id="side_bar">
+<div>
+<div class="side-bar__title">A</div>
+<div class="side-bar__dato">Arkam</div>
+<div class="side-bar__dato">Arkam</div>
+<div class="side-bar__dato">Arkam</div>
+<div class="side-bar__dato">Arkam</div>
+<div class="side-bar__dato">Arkam</div>
+<div class="side-bar__dato side-bar__dato--selcted">Arkam <span class="side-bar__dato--active"></span></div>
+<div class="side-bar__dato">Arkam</div>
+<div class="side-bar__dato">Arkam</div>
+<div class="side-bar__dato">Arkam</div>
+<div class="side-bar__dato">Arkam</div>
+<div class="side-bar__title">B</div>
+<div class="side-bar__dato">Bioshock</div>
+<div class="side-bar__dato">Bioshock</div>
+<div class="side-bar__dato">Bioshock</div>
+<div class="side-bar__dato">Bioshock</div>
+<div class="side-bar__dato">Bioshock</div>
+<div class="side-bar__dato">Bioshock</div>
+<div class="side-bar__dato">Bioshock</div>
+<div class="side-bar__dato">Bioshock</div>
+<div class="side-bar__dato">Bioshock</div>
+<div class="side-bar__dato">Bioshock</div>
+<div class="side-bar__dato">Bioshock</div>
+<div class="side-bar__dato">Bioshock</div>
+<div class="side-bar__dato">Bioshock</div>
+<div class="side-bar__dato">Bioshock</div>
+<div class="side-bar__dato">Bioshock</div>
+<div class="side-bar__title">C</div>
+<div class="side-bar__dato">CS GO</div>
+<div class="side-bar__dato">CS GO</div>
+<div class="side-bar__dato">CS GO</div>
+<div class="side-bar__dato">CS GO</div>
+<div class="side-bar__dato">CS GO</div>
+<div class="side-bar__dato">CS GO</div>
+<div class="side-bar__dato">CS GO</div>
+<div class="side-bar__dato">CS GO</div>
+<div class="side-bar__dato">CS GO</div>
+<div class="side-bar__dato">CS GO</div>
+<div class="side-bar__title">D</div>
+<div class="side-bar__dato">Dragon Age</div>
+<div class="side-bar__dato">Dragon Age</div>
+<div class="side-bar__dato">Dragon Age</div>
+<div class="side-bar__dato">Dragon Age</div>
+<div class="side-bar__dato">Dragon Age</div>
+<div class="side-bar__dato">Dragon Age</div>
+<div class="side-bar__dato">Dragon Age</div>
+<div class="side-bar__dato">Dragon Age</div>
+<div class="side-bar__dato">Dragon Age</div>
+<div class="side-bar__title">E</div>
+<div class="side-bar__dato">Enter the gungeon</div>
+<div class="side-bar__dato">Enter the gungeon</div>
+<div class="side-bar__dato">Enter the gungeon</div>
+<div class="side-bar__dato">Enter the gungeon</div>
+<div class="side-bar__dato">Enter the gungeon</div>
+<div class="side-bar__dato">Enter the gungeon</div>
+<div class="side-bar__dato">Enter the gungeon</div>
+<div class="side-bar__dato">Enter the gungeon</div>
+<div class="side-bar__dato">Enter the gungeon</div>
+<div class="side-bar__dato">Enter the gungeon</div>
+<div class="side-bar__dato">Enter the gungeon</div>
+<div class="side-bar__dato">Enter the gungeon</div>
+<div class="side-bar__dato">Enter the gungeon</div>
+<div class="side-bar__dato">Enter the gungeon</div>
+<div class="side-bar__dato">Enter the gungeon</div>
+<div class="side-bar__dato">Enter the gungeon</div>
+</div>
+</div>
+<div id="gallery">
+<!-- img src="https://avatarfiles.alphacoders.com/893/thumb-89303.gif" />
+<img src="https://i.imgur.com/rXB9b3Y.gif" />
+<img src="https://media1.tenor.com/images/3f18b71ab6dddd192b839361e657659e/tenor.gif?itemid=3556565" />
+<img src="https://media0.giphy.com/media/ZAaaCK5RhUWxG/200.gif" />
+<img src="https://66.media.tumblr.com/2f68b21617c3a6a39f2166311361f80c/tumblr_pd95y1H2JG1qm6oc3o1_400.gif" />
+<img src="https://i.pinimg.com/originals/5a/8e/36/5a8e3657ed81a1540caa169921111b5c.gif" / -->
+<div class="gallery__item">1 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </div>
+<div class="gallery__item">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </div>
+<div class="gallery__item">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </div>
+<div class="gallery__item">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </div>
+<div class="gallery__item">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </div>
+<div class="gallery__item">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </div>
+</div>
+</body>
+</html>
